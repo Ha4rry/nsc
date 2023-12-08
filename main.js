@@ -2,15 +2,19 @@ function numberSystemToItsRealWordLol(numType) {
     if (numType == 'dec') {
         return 'decimal'
     }
-    if (numType == 'hex') {
+    else if (numType == 'hex') {
         return 'hexadecimal'
     }
-    if (numType == 'bin') {
+    else if (numType == 'bin') {
         return 'binary'
     }
-    if (numType == 'oct') {
+    else if (numType == 'oct') {
         return 'octal'
     }
+}
+
+function calculateStuff(numType) {
+
 }
 function convertFrom(numType) {
     let dec = document.querySelector("#DecimalTB");
@@ -18,25 +22,44 @@ function convertFrom(numType) {
     let bin = document.querySelector("#BinaryTB");
     let oct = document.querySelector("#OctalTB");
 
-    num = Number(eval(numType).value);
+    
+    num = eval(numType).value;
 
-    let orig = eval(numType).value;
-
-    dec.value = num.toString(10);
-    hex.value = num.toString(16);
-    bin.value = num.toString(2);
-    oct.value = num.toString(8);
-
-    if (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN") {
-
-        let invalidString = `Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-        dec.value = invalidString;
-        hex.value = invalidString;
-        bin.value = invalidString;
-        oct.value = invalidString;
+    if (numType == 'dec') {
+        hex.value = Number(num).toString(16);
+        bin.value = Number(num).toString(2);
+        oct.value = Number(num).toString(8);
+    }
+    else if (numType == 'hex') {
+        dec.value = parseInt(Number(num), 16);
+        bin.value = parseInt(Number(num), 16).toString(2);
+        oct.value = parseInt(Number(num), 16).toString(8);
+    }
+    else if (numType == 'bin') {
+        dec.value = parseInt(Number(num), 2);
+        hex.value = parseInt(Number(num), 2).toString(16);
+        oct.value = parseInt(Number(num), 2).toString(8);
+    }
+    else if (numType == 'oct') {
+        dec.value = parseInt(Number(num), 8);
+        hex.value = parseInt(Number(num), 8).toString(16);
+        bin.value = parseInt(Number(num), 8).toString(2);
     }
 
-    eval(numType).value = orig;
+
+    
+    
+    // that if statement figures out how to convert from current numType input to DEC.
+    
+    
+
+if (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN") {
+    let invalidString = `Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
+    dec.value = invalidString;
+    hex.value = invalidString;
+    bin.value = invalidString;
+    oct.value = invalidString;
+}
 
 
 }
