@@ -1,6 +1,9 @@
 function isBinary(number) {
     // idk how to use regex, found this on google.
+
     return /^[01]+$/.test(number);
+    
+    
 }
 
 function numberSystemToItsRealWordLol(numType) {
@@ -33,6 +36,8 @@ function convertFrom(numType) {
 
     
     num = eval(numType).value;
+
+
     try {
         if (numType == 'dec') {
             hex.value = BigInt(num).toString(16);
@@ -57,30 +62,35 @@ function convertFrom(numType) {
       } catch (SyntaxError) {
 
         errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-        dec.value = 0;
-        hex.value = 0;
-        bin.value = 0;
-        oct.value = 0;
+        dec.value = "";
+        hex.value = "";
+        bin.value = "";
+        oct.value = "";
       }
+    if (dec.value == '' || hex.value == '' || bin.value == '' || oct.value == '') {
+        dec.value = "";
+        hex.value = "";
+        bin.value = "";
+        oct.value = "";
+    }
       
     
 
 
     
     
-    // that if statement figures out how to convert from current numType input to DEC.
     
     
     // if ( dec.value >= Math.pow(2,50) || hex.value >= Math.pow(2,50) || bin.value >= Math.pow(2,50) || oct.value >= Math.pow(2,50) ) {
     //     errorText.innerText = `Warning: Numbers at this length may cause inaccuracies in conversion.`;
     // }
 
-    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || !(isBinary(bin.value)) ) ){ //  
+    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || (!(isBinary(bin.value)) && bin.value != "") ) ){ //  
         errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-        dec.value = 0;
-        hex.value = 0;
-        bin.value = 0;
-        oct.value = 0;
+        dec.value = "";
+        hex.value = "";
+        bin.value = "";
+        oct.value = "";
     }
 
 
