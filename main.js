@@ -2,8 +2,11 @@ function isBinary(number) {
     // idk how to use regex, found this on google.
 
     return /^[01]+$/.test(number);
-    
-    
+}
+
+function isHex(number) { 
+    // idk how to use regex, found this on google.
+    return /^[0-9A-Fa-f]+$/.test(number);
 }
 
 function numberSystemToItsRealWordLol(numType) {
@@ -85,7 +88,7 @@ function convertFrom(numType) {
     //     errorText.innerText = `Warning: Numbers at this length may cause inaccuracies in conversion.`;
     // }
 
-    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || (!(isBinary(bin.value)) && bin.value != "") ) ){ //  
+    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || (!(isBinary(bin.value)) && bin.value != "") ||  (!(isHex(hex.value)) && hex.value != "")) ){ //  
         errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
         dec.value = "";
         hex.value = "";
