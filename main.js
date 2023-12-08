@@ -1,3 +1,8 @@
+function isBinary(number) {
+    // idk how to use regex, found this on google.
+    return /^[01]+$/.test(Number(number));
+}
+
 function numberSystemToItsRealWordLol(numType) {
     if (numType == 'dec') {
         return 'decimal'
@@ -17,10 +22,12 @@ function calculateStuff(numType) {
 
 }
 function convertFrom(numType) {
+    let errorText = document.querySelector("#errorText");
     let dec = document.querySelector("#DecimalTB");
     let hex = document.querySelector("#HexaDecimalTB");
     let bin = document.querySelector("#BinaryTB");
     let oct = document.querySelector("#OctalTB");
+    errorText.innerText = ``
 
     
     num = eval(numType).value;
@@ -53,13 +60,13 @@ function convertFrom(numType) {
     
     
 
-if (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN") {
-    let invalidString = `Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-    dec.value = invalidString;
-    hex.value = invalidString;
-    bin.value = invalidString;
-    oct.value = invalidString;
-}
+    if ( dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || !(isBinary(bin.value)) ) {
+        errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
+        dec.value = 0;
+        hex.value = 0;
+        bin.value = 0;
+        oct.value = 0;
+    }
 
 
 }
