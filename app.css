@@ -1,77 +1,35 @@
+textarea {
+  margin-left:1%;
+  width: 50%;             /* Full width */
+  padding: 0.5%;           /* Adding some padding for aesthetics */
+  box-sizing: border-box;  /* Making the padding not affect the total width */
+  border: 1px solid #ccc;  /* Adding a border */
+  border-radius: 4px;      /* Rounding the corners of the border */
+  background-color: #f8f8f8; /* Adding a background color */
+  font-size: 16px;         /* Increasing font size for readability */
+  resize: horizontal;      /* Allowing only horizontal resize */
+  overflow-x: auto;        /* Adding horizontal scroll on overflow */
+  white-space: nowrap;
+}
+
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
   line-height: 1.6;
-  padding: 20px;
+  color: #333;
+  background-color: #f4f4f4;
   margin: 0;
+  padding: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #333;
+  color: #35424a;
   margin-top: 0;
-  font-weight: normal;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2em; /* 32px */
-}
-
-h2 {
-  font-size: 1.5em; /* 24px */
-}
-
-p {
   margin-bottom: 10px;
+  font-weight: 300;
 }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 1170px;
-  margin: auto;
-  padding: 0 15px;
-}
-
-.navbar {
-  background: #333;
-  color: #fff;
-  padding: 10px 0;
-}
-
-.navbar a {
-  color: #fff;
-  padding: 0 15px;
-  text-transform: uppercase;
-}
-
-.main-header {
-  background: #e9ecef;
-  padding: 40px 0;
-  text-align: center;
-}
-
-.footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-}
-
-input[type="text"] {
-  font-size: 16px;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: calc(50%);
+h4 {
+  display: flex;        /* Use flexbox to align items */
+  align-items: center;  /* Center text vertically */
 }
