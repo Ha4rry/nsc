@@ -9,6 +9,13 @@ function isHex(number) {
     return /^[0-9A-Fa-f]+$/.test(number);
 }
 
+function isOct(number) { 
+    // idk how to use regex, found this on google.
+    return /[0-7]+$/.test(number);
+}
+
+
+
 function numberSystemToItsRealWordLol(numType) {
     if (numType == 'dec') {
         return 'decimal'
@@ -33,12 +40,19 @@ function convertFrom(numType) {
     let hex = document.querySelector("#HexaDecimalTB");
     let bin = document.querySelector("#BinaryTB");
     let oct = document.querySelector("#OctalTB");
+    let numTypes = ['dec', 'hex', 'bin', 'oct'];
     errorText.innerText = ``
 
     
-
-    
     num = eval(numType).value;
+
+    function clearOtherTextboxes() {
+        numTypes.splice(numTypes.indexOf(numType), 1);
+        for (nt of numTypes) {
+            eval(nt).value = ""
+        }
+        numTypes.push(numType);
+    }
 
 
     try {
@@ -65,16 +79,10 @@ function convertFrom(numType) {
       } catch (SyntaxError) {
 
         errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-        dec.value = "";
-        hex.value = "";
-        bin.value = "";
-        oct.value = "";
+        clearOtherTextboxes();
       }
     if (dec.value == '' || hex.value == '' || bin.value == '' || oct.value == '') {
-        dec.value = "";
-        hex.value = "";
-        bin.value = "";
-        oct.value = "";
+        clearOtherTextboxes();
     }
       
     
@@ -88,12 +96,9 @@ function convertFrom(numType) {
     //     errorText.innerText = `Warning: Numbers at this length may cause inaccuracies in conversion.`;
     // }
 
-    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || (!(isBinary(bin.value)) && bin.value != "") ||  (!(isHex(hex.value)) && hex.value != "")) ){ //  
+    if ( (dec.value == "NaN" || hex.value == "NaN" || bin.value == "NaN" || oct.value == "NaN" || (!(isBinary(bin.value)) && bin.value != "") ||  (!(isHex(hex.value)) && hex.value != "")) || (!(isOct(oct.value)) && oct.value != "") ){ //  
         errorText.innerText = `ERROR: Invalid ${numberSystemToItsRealWordLol(numType)} value.`;
-        dec.value = "";
-        hex.value = "";
-        bin.value = "";
-        oct.value = "";
+        clearOtherTextboxes();
     }
 
 
