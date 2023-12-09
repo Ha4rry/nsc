@@ -16,6 +16,7 @@ function isOct(number) {
 
 
 
+
 function numberSystemToItsRealWordLol(numType) {
     if (numType == 'dec') {
         return 'decimal'
@@ -31,9 +32,8 @@ function numberSystemToItsRealWordLol(numType) {
     }
 }
 
-function calculateStuff(numType) {
 
-}
+
 function convertFrom(numType) {
     let errorText = document.querySelector("#errorText");
     let dec = document.querySelector("#DecimalTB");
@@ -83,10 +83,7 @@ function convertFrom(numType) {
       }
     if (dec.value == '' || hex.value == '' || bin.value == '' || oct.value == '') {
         clearOtherTextboxes();
-    }
-      
-    
-
+    }      
 
     
     
